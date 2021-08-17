@@ -1,0 +1,415 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local TopStatus = Instance.new("TextLabel")
+local UICorner_2 = Instance.new("UICorner")
+local Loader = Instance.new("TextLabel")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(13, 27, 42)
+Frame.BorderColor3 = Color3.fromRGB(13, 27, 42)
+Frame.Position = UDim2.new(0.446, 0,0.467, 0)
+Frame.Size = UDim2.new(0, 17, 0, 14)
+
+--UICorner.Parent = Frame
+
+TopStatus.Name = "TopStatus"
+TopStatus.Parent = Frame
+TopStatus.Active = true
+TopStatus.BackgroundColor3 = Color3.fromRGB(13, 27, 42)
+TopStatus.BorderColor3 = Color3.fromRGB(13, 27, 42)
+TopStatus.Size = UDim2.new(0, 181, 0, 40)
+TopStatus.Visible = false
+TopStatus.Font = Enum.Font.SourceSansBold
+TopStatus.Text = ""
+TopStatus.TextColor3 = Color3.fromRGB(255, 255, 255)
+TopStatus.TextSize = 18.000
+
+--UICorner_2.Parent = TopStatus
+
+Loader.Name = "Loader"
+Loader.Parent = Frame
+Loader.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+Loader.Position = UDim2.new(0.0607734807, 0, 0.387931049, 0)
+Loader.Size = UDim2.new(0, 4, 0, 19)
+Loader.Visible = false
+Loader.Font = Enum.Font.SourceSans
+Loader.Text = ""
+Loader.TextColor3 = Color3.fromRGB(0, 0, 0)
+Loader.TextSize = 14.000
+
+--UICorner_3.Parent = Loader
+
+-- Scripts:
+
+local function RRBX_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	wait(0.5)
+	script.Parent:TweenSize(
+		UDim2.new(0, 181,0, 87),
+		"Out",
+		"Quad",
+		2,
+		false
+	
+	
+	)
+	
+	wait(1.8)
+	
+	script.Parent.TopStatus.Visible = true
+	wait(0.8)
+	script.Parent.TopStatus.Text = "MeowHub - "..game.Players.LocalPlayer.Name..""
+	wait(0.3)
+	script.Parent.Loader.Visible = true
+	wait(1)
+	script.Parent.Loader:TweenSize(
+		UDim2.new(0, 30,0, 19),
+		"Out",
+		"Quad",
+		0.8,
+		false
+	)
+	wait(1.5)
+	script.Parent.Loader:TweenSize(
+		UDim2.new(0, 60,0, 19),
+		"Out",
+		"Quad",
+		0.8,
+		false
+	)
+	wait(1.5)
+	script.Parent.Loader:TweenSize(
+		UDim2.new(0, 90,0, 19),
+		"Out",
+		"Quad",
+		0.8,
+		false
+	)
+	wait(1.2)
+	script.Parent.Loader:TweenSize(
+		UDim2.new(0, 120,0, 19),
+		"Out",
+		"Quad",
+		0.8,
+		false
+	)
+	wait(1.5)
+	script.Parent.Loader:TweenSize(
+		UDim2.new(0, 157,0, 19),
+		"Out",
+		"Quad",
+		0.8,
+		false
+	)
+end
+coroutine.wrap(RRBX_fake_script)()
+wait(12)
+ScreenGui:Destroy()
+if game.PlaceId == 155615604 then
+local config = {
+    ["HeaderWidth"] = 250,
+    ["AccentColor"] = Color3.new(0.6,0,0)
+ }
+ local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/DropLib"))():Init(config,game.CoreGui)
+
+ local main = gui:CreateCategory("Main")
+ local lpg = gui:CreateCategory("Player")
+ local tps = gui:CreateCategory("Teleports")
+ local Misc = gui:CreateCategory("Misc")
+
+
+ main:CreateButton("Weapons",function() 
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["Remington 870"].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+    
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["M9"].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+    
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["AK-47"].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+    
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].single["Crude Knife"].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+    
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].single["Hammer"].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+end)
+
+main:CreateButton("Secret Items",function() 
+	local clone = game:GetService("ReplicatedStorage").Tools["Extendo mirror"]:Clone()
+	clone.Parent = game.Players.LocalPlayer.Backpack
+
+	local clone = game:GetService("ReplicatedStorage").Tools["Sharpened stick"]:Clone()
+clone.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+
+ lpg:CreateSlider("Walk Speed", function(ws) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = ws end,0,200,nil,true,game.Players.LocalPlayer.Character.Humanoid.WalkSpeed)
+ lpg:CreateSlider("Jump Power", function(jp) game.Players.LocalPlayer.Character.Humanoid.JumpPower = jp end,0,200,nil,true,game.Players.LocalPlayer.Character.Humanoid.JumpPower)
+ lpg:CreateSlider("FOV", function(jp) game.Workspace.CurrentCamera.FieldOfView = jp end,30,120,nil,true,game.Workspace.CurrentCamera.FieldOfView)
+
+ Misc:CreateButton("Discord Invite", function()
+ setclipboard("https://discord.gg/svmFamevhG")
+ end)
+
+
+tps:CreateButton("Guards Room",function() 
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(824.200378, 99.9900055, 2257.38501)
+end)
+
+tps:CreateButton("Criminal Base",function() 
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-949.874695, 94.1287842, 2061.99194)
+	end)
+
+tps:CreateButton("Secret Room",function() 
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(697.19397, 99.9900055, 2357.77905)
+		end)
+
+main:CreateButton("Kill Aura",function() 
+    while true do
+        wait(0.7)
+        for i,v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Name ~= game.Players.LocalPlayer.Name then
+                for i = 1, 10 do
+                game.ReplicatedStorage.meleeEvent:FireServer(v)
+            end
+            end
+            end
+        end
+end)
+
+
+main:CreateButton("SuperPunch",function() 
+	local UIS = game:GetService("UserInputService")
+
+
+	UIS.InputEnded:Connect(function(inp)
+		if inp.KeyCode == Enum.KeyCode.F then
+			  for i,v in pairs(game.Players:GetPlayers()) do
+		if v ~= game.Players.LocalPlayer then
+			for i = 1,10 do
+				game:GetService("ReplicatedStorage").meleeEvent:FireServer(v)
+				end
+	end
+	end 
+		end
+	end)
+end)
+
+
+main:CreateButton("Mod Guns",function() 
+	local module = nil
+
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Remington 870") then
+		module = require(game:GetService("Players").LocalPlayer.Backpack["Remington 870"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("Remington 870") then
+		module = require(game:GetService("Players").LocalPlayer.Character["Remington 870"].GunStates)
+	end
+	if module ~= nil then
+		module["MaxAmmo"] = math.huge 
+		module["CurrentAmmo"] = math.huge 
+		module["StoredAmmo"] = math.huge 
+		module["FireRate"] = 0.05
+		module["AutoFire"] = true 
+		module["Range"] = math.huge
+		module["Spread"] = 0
+		module["ReloadTime"] = 0.0000001
+		module["Bullets"] = 1
+	end
+	
+	local module2 = nil
+	
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("M9") then
+		module2 = require(game:GetService("Players").LocalPlayer.Backpack["M9"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("M9") then
+		module2 = require(game:GetService("Players").LocalPlayer.Character["M9"].GunStates)
+	end
+	if module2 ~= nil then
+		module2["MaxAmmo"] = math.huge 
+		module2["CurrentAmmo"] = math.huge 
+		module2["StoredAmmo"] = math.huge 
+		module2["FireRate"] = 0.05
+		module2["AutoFire"] = true 
+		module2["Range"] = math.huge
+		module2["Spread"] = 0
+		module2["ReloadTime"] = 0.0000001
+		module2["Bullets"] = 1
+	end
+	
+	local module3 = nil
+	
+	if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("AK-47") then
+		module3 = require(game:GetService("Players").LocalPlayer.Backpack["AK-47"].GunStates)
+	elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("AK-47") then
+		module3 = require(game:GetService("Players").LocalPlayer.Character["AK-47"].GunStates)
+	end
+	if module3 ~= nil then
+		module3["MaxAmmo"] = math.huge 
+		module3["CurrentAmmo"] = math.huge 
+		module3["StoredAmmo"] = math.huge 
+		module3["FireRate"] = 0.05
+		module3["AutoFire"] = true 
+		module3["Range"] = math.huge
+		module3["Spread"] = 0
+		module3["ReloadTime"] = 0.0000001
+		module3["Bullets"] = 1
+	end
+	end)
+
+
+	Misc:CreateTextBox("Spam Chat",function(v) 
+		while true do
+			wait(2.5)
+			local A_1 = v
+			local A_2 = "All"
+			local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+			Event:FireServer(A_1, A_2)
+			end
+		end)
+	
+
+Misc:CreateButton("Remove Blur",function() 
+game.Players.LocalPlayer.PlayerGui.Home.fadeFrame.Visible = false
+end)
+
+tps:CreateTextBox("Goto Player",function(v) 
+    for i,v2 in pairs (game:GetService("Players"):GetPlayers()) do
+        if string.lower(v2.Name) == string.lower(v) then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v2.Character.HumanoidRootPart.CFrame
+        end
+    end
+	end)
+
+lpg:CreateButton("Infinite Jump",function() 
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState(3)
+end)
+end)
+
+lpg:CreateButton("Noclip",function() 
+game.Players.LocalPlayer.Character.Humanoid.Touched:Connect(function()
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end)
+end)
+
+Misc:CreateButton("FullBright",function() 
+    game.Lighting.TimeOfDay = 13
+
+    game.Lighting:GetPropertyChangedSignal("TimeOfDay"):Connect(function()
+        game.Lighting.TimeOfDay = 13
+        game.Lighting.Ambient = Color3.fromRGB(255,255,255)
+    end)
+	end)
+end
+
+if game.PlaceId == 2377868063 then
+		local config = {
+			["HeaderWidth"] = 250,
+			["AccentColor"] = Color3.new(0.6,0,0)
+		 }
+		 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/DropLib"))():Init(config,game.CoreGui)
+		
+		 local main = gui:CreateCategory("Main")
+		 local lpg = gui:CreateCategory("Player")
+		 local Misc = gui:CreateCategory("Misc")
+		
+
+		Misc:CreateButton("Discord Invite", function()
+			setclipboard("https://discord.gg/svmFamevhG")
+			end)
+
+			Misc:CreateTextBox("Spam Chat",function(v) 
+				while true do
+					wait(2.5)
+					local A_1 = v
+					local A_2 = "All"
+					local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+					Event:FireServer(A_1, A_2)
+					end
+				end)
+			
+		main:CreateButton("HitBox Extender",function()
+			while true do
+				wait(1)
+				for i,v in next, game.Players:GetPlayers() do
+					if v ~= game.Players.LocalPlayer then
+				 pcall(function()
+					 v.Character.HumanoidRootPart.Name = "H"
+					 v.Character.H.Size = Vector3.new(25,25,25)
+					 v.Character.H.Material = "Neon"
+					 v.Character.H.Transparency = 1
+					 v.Character.H.CanCollide = false
+				 end)
+					end
+				end
+			end
+		end)
+
+		lpg:CreateButton("Remove Builds (Buggy)",function()
+			for i,v in pairs(game.Workspace:GetChildren()) do
+				if v.Name == "BuildStuff" then
+					v:Destroy()
+					end
+			end
+		end)
+
+		Misc:CreateButton("FullBright",function() 
+			game.Lighting.TimeOfDay = 13
+		
+			game.Lighting:GetPropertyChangedSignal("TimeOfDay"):Connect(function()
+				game.Lighting.TimeOfDay = 13
+				game.Lighting.Ambient = Color3.fromRGB(255,255,255)
+			end)
+			end)
+
+		main:CreateButton("FOV",function()
+			game.Workspace.CurrentCamera.FieldOfView = 120
+
+			game.Workspace.CurrentCamera:GetPropertyChangedSignal("FieldOfView"):Connect(function()
+				game.Workspace.CurrentCamera.FieldOfView = 120
+			end)
+		end)
+
+
+		lpg:CreateButton("Speed",function()
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+
+			game.Players.LocalPlayer.Character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+			end)
+		end)
+
+		main:CreateButton("TriggerBot",function()
+			local player = game.Players.LocalPlayer
+			local mouse = player:GetMouse()
+			
+			
+			
+			game:GetService("RunService").RenderStepped:Connect(function()
+			if mouse.Target.Parent:FindFirstChild("Humanoid") and mouse.Target.Parent.Name ~= player.Name then
+				mouse1press() wait() mouse1release()
+			end
+			end)
+		end)
+        
+		
+				lpg:CreateButton("Infinite Jump",function() 
+		game:GetService("UserInputService").JumpRequest:Connect(function()
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(3)
+		end)
+		end)
+	end
